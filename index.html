@@ -1,611 +1,720 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Kode Suryam – QA Automation Lead</title>
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suryam Kode | QA Automation & Test Architecture Leader</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  :root {
-    --bg:        #0D0F14;
-    --surface:   #1C2030;
-    --surface2:  #242840;
-    --accent:    #00D4FF;
-    --accent2:   #7B5EA7;
-    --text:      #F0F4FF;
-    --muted:     #8892A4;
-    --border:    #2A3050;
-    --pass:      #00E096;
-    --warn:      #FFB547;
-    --mono:      'Source Sans 3', sans-serif;
-    --sans:      'Source Sans 3', sans-serif;
-    --serif:     'Source Serif 4', serif;
-  }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+        }
 
-  html { scroll-behavior: smooth; }
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid #f0f0f0;
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--sans);
-    font-size: 15px;
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
+        .nav-brand {
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
 
-  /* ── NAV ─────────────────────────────── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 16px 48px;
-    background: rgba(13,15,20,0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-logo {
-    font-family: var(--sans); font-size: 15px; color: var(--accent);
-    font-weight: 600; letter-spacing: 0.02em;
-  }
-  .nav-links { display: flex; gap: 32px; list-style: none; }
-  .nav-links a {
-    font-family: var(--sans); font-size: 14px; color: var(--muted);
-    text-decoration: none; font-weight: 500;
-    transition: color .2s;
-  }
-  .nav-links a:hover { color: var(--accent); }
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
 
-  /* ── HERO ─────────────────────────────── */
-  .hero {
-    min-height: 100vh;
-    display: flex; flex-direction: column; justify-content: center;
-    padding: 120px 48px 80px;
-    position: relative; overflow: hidden;
-  }
-  .hero-grid {
-    position: absolute; inset: 0; pointer-events: none;
-    background-image:
-      linear-gradient(var(--border) 1px, transparent 1px),
-      linear-gradient(90deg, var(--border) 1px, transparent 1px);
-    background-size: 60px 60px;
-    opacity: 0.3;
-    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
-  }
-  .hero-eyebrow {
-    font-family: var(--sans); font-size: 13px;
-    color: var(--accent); letter-spacing: 0.10em;
-    text-transform: uppercase; margin-bottom: 24px;
-    display: flex; align-items: center; gap: 12px;
-    font-weight: 600;
-  }
-  .hero-eyebrow::before {
-    content: ''; display: block; width: 32px; height: 1px;
-    background: var(--accent);
-  }
-  h1 {
-    font-family: var(--serif); font-size: clamp(2.4rem, 6vw, 5rem);
-    font-weight: 700; line-height: 1.05; letter-spacing: -0.01em;
-    margin-bottom: 16px;
-  }
-  h1 .dim { color: var(--muted); font-weight: 300; }
-  .hero-role {
-    font-size: 1.1rem; color: var(--muted); max-width: 520px;
-    margin-bottom: 48px; line-height: 1.7;
-  }
-  .hero-role strong { color: var(--text); }
+        .nav-links a {
+            text-decoration: none;
+            color: #666;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
 
-  .hero-stats {
-    display: flex; gap: 48px; flex-wrap: wrap; margin-bottom: 48px;
-  }
-  .stat-item { display: flex; flex-direction: column; gap: 4px; }
-  .stat-num {
-    font-family: var(--serif); font-size: 2.2rem; font-weight: 700;
-    color: var(--accent); line-height: 1;
-    text-shadow: 0 0 24px rgba(0,212,255,0.4);
-  }
-  .stat-label {
-    font-size: 11px; color: var(--muted);
-    text-transform: uppercase; letter-spacing: 0.08em;
-  }
+        .nav-links a:hover {
+            color: #000;
+        }
 
-  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
-  .btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 12px 24px; border-radius: 6px;
-    font-family: var(--sans); font-size: 14px; font-weight: 600;
-    letter-spacing: 0.01em; text-decoration: none; cursor: pointer;
-    transition: all .2s; border: none;
-  }
-  .btn-primary {
-    background: var(--accent); color: var(--bg);
-  }
-  .btn-primary:hover { background: #33DDFF; transform: translateY(-1px); }
-  .btn-ghost {
-    background: transparent; color: var(--text);
-    border: 1px solid var(--border);
-  }
-  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+        .nav-links .cta {
+            background: #1a1a1a;
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 6px;
+            font-size: 14px;
+        }
 
-  /* ── SECTION SHARED ────────────────────── */
-  section { padding: 100px 48px; }
-  .section-label {
-    font-family: var(--sans); font-size: 12px;
-    color: var(--accent); letter-spacing: 0.12em;
-    text-transform: uppercase; margin-bottom: 8px; font-weight: 600;
-  }
-  h2 {
-    font-family: var(--serif); font-size: clamp(1.6rem, 3vw, 2.4rem);
-    font-weight: 700; margin-bottom: 48px; letter-spacing: -0.01em;
-  }
-  h2 .dim { color: var(--muted); }
+        .nav-links .cta:hover {
+            background: #333;
+            color: white;
+        }
 
-  /* ── SKILLS ─────────────────────────────── */
-  .skills-section { background: var(--surface); }
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 32px;
-  }
-  .skill-group h3 {
-    font-family: var(--sans); font-size: 12px;
-    color: var(--accent); letter-spacing: 0.10em;
-    text-transform: uppercase; margin-bottom: 20px; font-weight: 600;
-    display: flex; align-items: center; gap: 10px;
-  }
-  .skill-group h3::after {
-    content: ''; flex: 1; height: 1px; background: var(--border);
-  }
-  .skill-bar { margin-bottom: 16px; }
-  .skill-bar-label {
-    display: flex; justify-content: space-between;
-    font-size: 13px; color: var(--text); margin-bottom: 6px;
-  }
-  .skill-bar-label span:last-child {
-    font-family: var(--sans); font-size: 12px; color: var(--muted); font-weight: 500;
-  }
-  .bar-track {
-    height: 4px; background: var(--border); border-radius: 2px;
-    overflow: hidden;
-  }
-  .bar-fill {
-    height: 100%; border-radius: 2px;
-    background: linear-gradient(90deg, var(--accent2), var(--accent));
-    transform: scaleX(0); transform-origin: left;
-    animation: fillBar 1s cubic-bezier(.4,0,.2,1) forwards;
-    animation-play-state: paused;
-  }
-  .bar-fill.animated { animation-play-state: running; }
-  @keyframes fillBar { to { transform: scaleX(1); } }
+        /* Hero Section */
+        .hero {
+            padding: 6rem 5% 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
 
-  /* ── EXPERIENCE ──────────────────────────── */
-  .experience-section { background: var(--bg); }
-  .timeline { position: relative; padding-left: 32px; }
-  .timeline::before {
-    content: ''; position: absolute; left: 0; top: 8px; bottom: 0;
-    width: 1px; background: var(--border);
-  }
-  .timeline-item { position: relative; margin-bottom: 56px; }
-  .timeline-dot {
-    position: absolute; left: -36px; top: 6px;
-    width: 10px; height: 10px; border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 0 12px rgba(0,212,255,0.6);
-  }
-  .timeline-header { margin-bottom: 4px; }
-  .timeline-role {
-    font-family: var(--sans); font-size: 1.05rem;
-    font-weight: 700; color: var(--text);
-  }
-  .timeline-company {
-    font-size: 14px; color: var(--accent); margin-bottom: 2px; font-weight: 500;
-  }
-  .timeline-meta {
-    font-family: var(--sans); font-size: 12px;
-    color: var(--muted); margin-bottom: 16px;
-    display: flex; gap: 16px; flex-wrap: wrap;
-  }
-  .timeline-meta .badge {
-    background: var(--surface2); border: 1px solid var(--border);
-    padding: 2px 10px; border-radius: 20px; font-size: 10px;
-  }
-  .timeline-bullets { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-  .timeline-bullets li {
-    font-size: 13.5px; color: var(--muted); line-height: 1.6;
-    padding-left: 18px; position: relative;
-  }
-  .timeline-bullets li::before {
-    content: '▸'; position: absolute; left: 0;
-    color: var(--accent); font-size: 10px; top: 4px;
-  }
-  .timeline-bullets li strong { color: var(--text); }
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: #000;
+        }
 
-  /* ── ACHIEVEMENTS ────────────────────────── */
-  .achievements-section { background: var(--surface); }
-  .achievements-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 24px;
-  }
-  .ach-card {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 12px; padding: 28px;
-    transition: border-color .2s, transform .2s;
-  }
-  .ach-card:hover { border-color: var(--accent); transform: translateY(-3px); }
-  .ach-icon {
-    font-size: 28px; margin-bottom: 16px;
-    display: block;
-  }
-  .ach-num {
-    font-family: var(--serif); font-size: 2rem;
-    font-weight: 700; color: var(--pass);
-    text-shadow: 0 0 20px rgba(0,224,150,0.3);
-    margin-bottom: 6px;
-  }
-  .ach-desc {
-    font-size: 13px; color: var(--muted); line-height: 1.6;
-  }
+        .hero-content p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
 
-  /* ── CERTIFICATIONS ──────────────────────── */
-  .certs-section { background: var(--bg); }
-  .certs-grid {
-    display: flex; flex-wrap: wrap; gap: 16px;
-  }
-  .cert-chip {
-    display: inline-flex; align-items: center; gap: 10px;
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 8px; padding: 14px 20px;
-    font-size: 13.5px; transition: border-color .2s;
-  }
-  .cert-chip:hover { border-color: var(--accent2); }
-  .cert-chip .cert-dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: var(--warn); flex-shrink: 0;
-    box-shadow: 0 0 8px rgba(255,181,71,0.5);
-  }
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
 
-  /* ── CONTACT ─────────────────────────────── */
-  .contact-section {
-    background: var(--surface);
-    text-align: center;
-  }
-  .contact-section h2 { margin-bottom: 16px; }
-  .contact-sub {
-    color: var(--muted); margin-bottom: 40px; max-width: 440px;
-    margin-left: auto; margin-right: auto;
-  }
-  .contact-links {
-    display: flex; justify-content: center;
-    gap: 16px; flex-wrap: wrap;
-  }
-  .contact-item {
-    display: flex; align-items: center; gap: 8px;
-    background: var(--surface2); border: 1px solid var(--border);
-    border-radius: 8px; padding: 12px 20px;
-    font-family: var(--sans); font-size: 14px; color: var(--text);
-    text-decoration: none; font-weight: 500;
-    transition: border-color .2s, color .2s;
-  }
-  .contact-item:hover { border-color: var(--accent); color: var(--accent); }
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border: 2px solid #1a1a1a;
+            display: inline-block;
+        }
 
-  /* ── FOOTER ──────────────────────────────── */
-  footer {
-    padding: 24px 48px;
-    border-top: 1px solid var(--border);
-    display: flex; justify-content: space-between; align-items: center;
-    flex-wrap: wrap; gap: 8px;
-  }
-  footer p {
-    font-family: var(--sans); font-size: 13px; color: var(--muted);
-  }
-  .status-dot {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-family: var(--sans); font-size: 13px; color: var(--pass);
-  }
-  .status-dot::before {
-    content: ''; width: 6px; height: 6px; border-radius: 50%;
-    background: var(--pass); animation: pulse 2s infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; } 50% { opacity: 0.3; }
-  }
+        .btn-primary {
+            background: #1a1a1a;
+            color: white;
+        }
 
-  /* ── RESPONSIVE ──────────────────────────── */
-  @media (max-width: 640px) {
-    nav { padding: 14px 20px; }
-    .nav-links { display: none; }
-    section, .hero { padding: 80px 20px; }
-    .hero-stats { gap: 28px; }
-    footer { padding: 20px; }
-  }
+        .btn-primary:hover {
+            background: #333;
+        }
 
-  @media (prefers-reduced-motion: reduce) {
-    .bar-fill { animation: none; transform: scaleX(1); }
-    .ach-card:hover { transform: none; }
-    .btn-primary:hover { transform: none; }
-  }
-</style>
+        .btn-secondary {
+            background: transparent;
+            color: #1a1a1a;
+        }
+
+        .btn-secondary:hover {
+            background: #f5f5f5;
+        }
+
+        .hero-image {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 64px;
+            font-weight: 700;
+        }
+
+        /* Impact Metrics */
+        .metrics {
+            background: #f9f9f9;
+            padding: 4rem 5%;
+            margin: 4rem 0;
+        }
+
+        .metrics-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .metrics-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .metric-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .metric-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            font-size: 14px;
+            color: #666;
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+        }
+
+        .metric-description {
+            font-size: 14px;
+            color: #999;
+            line-height: 1.6;
+        }
+
+        /* Case Studies */
+        .case-studies {
+            padding: 4rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 3rem;
+        }
+
+        .case-study {
+            margin-bottom: 4rem;
+            padding-bottom: 4rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .case-study:last-child {
+            border-bottom: none;
+        }
+
+        .case-study-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .case-study-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .company-badge {
+            background: #667eea;
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .case-study-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .case-study-text p {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .case-study-highlights {
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .case-study-highlights h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .case-study-highlights ul {
+            list-style: none;
+        }
+
+        .case-study-highlights li {
+            padding: 0.5rem 0;
+            color: #333;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .case-study-highlights li:before {
+            content: "→";
+            margin-right: 1rem;
+            color: #667eea;
+            font-weight: 700;
+        }
+
+        /* Expertise Section */
+        .expertise {
+            background: #f9f9f9;
+            padding: 4rem 5%;
+            margin: 4rem 0;
+        }
+
+        .expertise-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .expertise-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .expertise-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+        }
+
+        .expertise-card ul {
+            list-style: none;
+        }
+
+        .expertise-card li {
+            padding: 0.5rem 0;
+            color: #666;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+
+        .expertise-card li:before {
+            content: "●";
+            margin-right: 0.75rem;
+            color: #667eea;
+            font-size: 12px;
+        }
+
+        /* Philosophy Section */
+        .philosophy {
+            padding: 4rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .philosophy-card {
+            padding: 2rem;
+            background: #f9f9f9;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .philosophy-card h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .philosophy-card p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #1a1a1a;
+            color: white;
+            padding: 4rem 5%;
+            text-align: center;
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact p {
+            font-size: 18px;
+            margin-bottom: 2.5rem;
+            color: #ccc;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .contact-links a:hover {
+            color: #667eea;
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            color: #666;
+            padding: 2rem 5%;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 4rem 5% 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .case-study-content {
+                grid-template-columns: 1fr;
+            }
+
+            .philosophy-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-brand">SK</div>
+        <ul class="nav-links">
+            <li><a href="#impact">Impact</a></li>
+            <li><a href="#expertise">Expertise</a></li>
+            <li><a href="#philosophy">Philosophy</a></li>
+            <li><a href="#contact" class="cta">Get in Touch</a></li>
+        </ul>
+    </nav>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">Kode Suryam</div>
-  <ul class="nav-links">
-    <li><a href="#skills">skills</a></li>
-    <li><a href="#experience">experience</a></li>
-    <li><a href="#achievements">achievements</a></li>
-    <li><a href="#contact">contact</a></li>
-  </ul>
-</nav>
-
-<!-- HERO -->
-<section class="hero" id="hero">
-  <div class="hero-grid"></div>
-  <div class="hero-eyebrow">QA Automation Lead · Healthcare IT</div>
-  <h1>
-    Kode<br/>
-    <span class="dim">Suryam</span>
-  </h1>
-  <p class="hero-role">
-    <strong>10+ years</strong> building automated quality frameworks that actually ship.<br/>
-    Selenium · Playwright · RPA Testing · CI/CD · BDD · Healthcare Domain
-  </p>
-  <div class="hero-stats">
-    <div class="stat-item">
-      <span class="stat-num">10+</span>
-      <span class="stat-label">Years Experience</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-num">100K+</span>
-      <span class="stat-label">Claims / Day Automated</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-num">80%</span>
-      <span class="stat-label">Processing Time Reduced</span>
-    </div>
-  </div>
-  <div class="hero-actions">
-    <a href="#experience" class="btn btn-primary">▸ View Experience</a>
-    <a href="mailto:kodesuryam@gmail.com" class="btn btn-ghost">✉ Get in Touch</a>
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section class="skills-section" id="skills">
-  <div class="section-label">Skills & Tools</div>
-  <h2>Technical <span class="dim">Stack</span></h2>
-  <div class="skills-grid">
-
-    <div class="skill-group">
-      <h3>Test Automation</h3>
-      <div class="skill-bar">
-        <div class="skill-bar-label"><span>Selenium WebDriver</span><span>Expert</span></div>
-        <div class="bar-track"><div class="bar-fill" style="animation-delay:.1s" data-width="0.95"></div></div>
-      </div>
-      <div class="skill-bar">
-        <div class="skill-bar-label"><span>Cucumber / BDD</span><span>Expert</span></div>
-        <div class="bar-track"><div class="bar-fill" style="animation-delay:.2s" data-width="0.92"></div></div>
-      </div>
-      <div class="skill-bar">
-        <div class="skill-bar-label"><span>Playwright</span><span>Advanced</span></div>
-        <div class="bar-track"><div class="bar-fill" style="animation-delay:.3s" data-width="0.82"></div></div>
-      </div>
-      <div class="skill-bar">
-        <div class="skill-bar-label"><span>Page Object Model</span><span>Expert</span></div>
-        <div class="bar-track"><div class="bar-fill" style="animation-delay:.4s" data-width="0.94"></div></div>
-      </div>
-    </div>
-
-    <div class="skill-group">
-      <h3>CI/CD & DevOps</h3>
-      <div class="skill-bar">
-        <div class="skill-bar-label"><span>Jenkins</span><span>Advanced</span></div>
-        <div class="bar-track"><div class="bar-fill" style="animation-delay:.2s" data-width="0.88"></div></div>
-      </div>
-      <div class="skill-bar">
-        <div class="skill-bar-label"><span>Bamboo</span><span>Advanced</span></div>
-        <div class="bar-track"><div class="bar-fill" style="animation-delay:.3s" data-width="0.85"></div></div>
-      </div>
-      <div class="skill-bar">
-        <div class="skill-bar-label"><span>Git / Bitbucket</span><span>Advanced</span></div>
-        <div class="bar-track"><div class="bar-fill" style="animation-delay:.4s" data-width="0.87"></div></div>
-      </div>
-      <div class="skill-bar">
-        <div class="skill-bar-label"><span>AWS / Azure</span><span>Familiar</span></div>
-        <div class="bar-track"><div class="bar-fill" style="animation-delay:.5s" data-width="0.55"></div></div>
-      </div>
-    </div>
-
-    <div class="skill-group">
-      <h3>RPA & Integration</h3>
-      <div class="skill-bar">
-        <div class="skill-bar-label"><span>UiPath</span><span>Expert</span></div>
-        <div class="bar-track"><div class="bar-fill" style="animation-delay:.1s" data-width="0.93"></div></div>
-      </div>
-      <div class="skill-bar">
-        <div class="skill-bar-label"><span>Automation Anywhere</span><span>Advanced</span></div>
-        <div class="bar-track"><div class="bar-fill" style="animation-delay:.2s" data-width="0.78"></div></div>
-      </div>
-      <div class="skill-bar">
-        <div class="skill-bar-label"><span>OpenConnect (Mainframe)</span><span>Advanced</span></div>
-        <div class="bar-track"><div class="bar-fill" style="animation-delay:.3s" data-width="0.82"></div></div>
-      </div>
-      <div class="skill-bar">
-        <div class="skill-bar-label"><span>API / REST Testing</span><span>Advanced</span></div>
-        <div class="bar-track"><div class="bar-fill" style="animation-delay:.4s" data-width="0.86"></div></div>
-      </div>
-    </div>
-
-    <div class="skill-group">
-      <h3>Languages & DB</h3>
-      <div class="skill-bar">
-        <div class="skill-bar-label"><span>Core Java</span><span>Advanced</span></div>
-        <div class="bar-track"><div class="bar-fill" style="animation-delay:.1s" data-width="0.88"></div></div>
-      </div>
-      <div class="skill-bar">
-        <div class="skill-bar-label"><span>JavaScript</span><span>Intermediate</span></div>
-        <div class="bar-track"><div class="bar-fill" style="animation-delay:.2s" data-width="0.72"></div></div>
-      </div>
-      <div class="skill-bar">
-        <div class="skill-bar-label"><span>MySQL / Oracle / PL-SQL</span><span>Advanced</span></div>
-        <div class="bar-track"><div class="bar-fill" style="animation-delay:.3s" data-width="0.82"></div></div>
-      </div>
-      <div class="skill-bar">
-        <div class="skill-bar-label"><span>JIRA / HP ALM / QTest</span><span>Expert</span></div>
-        <div class="bar-track"><div class="bar-fill" style="animation-delay:.4s" data-width="0.91"></div></div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section class="experience-section" id="experience">
-  <div class="section-label">Career History</div>
-  <h2>Work <span class="dim">Experience</span></h2>
-  <div class="timeline">
-
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-header">
-        <div class="timeline-role">Senior Engineer 2 – Quality Assurance</div>
-        <div class="timeline-company">Deloitte Consulting</div>
-        <div class="timeline-meta">
-          <span>Apr 2025 – Present</span>
-          <span class="badge">Healthcare</span>
-          <span class="badge">ElevanceHealth</span>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>QA Automation & Test Architecture Leader</h1>
+            <p>Building enterprise-grade test automation frameworks and scaling quality-first practices across global healthcare IT ecosystems. 10+ years driving test transformation at Deloitte, Carelon, and Optum.</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">Let's Connect</a>
+                <a href="#expertise" class="btn btn-secondary">View Expertise</a>
+            </div>
         </div>
-      </div>
-      <ul class="timeline-bullets">
-        <li>Designed and executed test plans for <strong>functional, regression, integration, system, and UAT</strong> across Java and React healthcare applications.</li>
-        <li>Built and maintained <strong>Selenium WebDriver (Java)</strong> automation framework integrated with Jenkins CI/CD pipeline for continuous regression testing.</li>
-        <li>Mentored QA engineers, managed sprint workload distribution, and provided performance feedback to drive team growth.</li>
-        <li>Automated REST service validation for healthcare provider data; led production sign-off activities ensuring <strong>zero post-production defects</strong>.</li>
-        <li>Identified quality risks early in SDLC and collaborated with dev, product, and ops teams for timely resolution.</li>
-      </ul>
-    </div>
+        <div class="hero-image">SK</div>
+    </section>
 
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-header">
-        <div class="timeline-role">Technical Lead – Quality Assurance</div>
-        <div class="timeline-company">Carelon Global Solutions / Anthem, Inc.</div>
-        <div class="timeline-meta">
-          <span>Nov 2019 – Nov 2024</span>
-          <span class="badge">Healthcare</span>
-          <span class="badge">Claims Automation</span>
+    <!-- Impact Metrics -->
+    <section class="metrics" id="impact">
+        <div class="metrics-container">
+            <h2 class="metrics-title">Impact at Scale</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-number">1.5M+</div>
+                    <div class="metric-label">Monthly Claims Tested</div>
+                    <div class="metric-description">Orchestrated test automation covering 1.5M+ monthly claims adjudication transactions across healthcare clients</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-number">800+</div>
+                    <div class="metric-label">RPA Bots Governed</div>
+                    <div class="metric-description">Designed and validated quality frameworks for 800+ UiPath & OpenConnect bots in claims processing</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-number">40+</div>
+                    <div class="metric-label">Team Members Led</div>
+                    <div class="metric-description">Built and scaled high-performing QA teams with cross-functional expertise in test strategy and automation</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-number">90%+</div>
+                    <div class="metric-label">Automation Coverage</div>
+                    <div class="metric-description">Architected POM frameworks achieving 90%+ test coverage in claims eligibility and benefits workflows</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-number">50%</div>
+                    <div class="metric-label">Cycle Time Reduction</div>
+                    <div class="metric-description">Accelerated CI/CD pipelines through Playwright & Selenium optimization in GitHub Actions & Jenkins</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-number">100%</div>
+                    <div class="metric-label">Critical Path Coverage</div>
+                    <div class="metric-description">Ensured zero-defect critical workflows via BDD/Cucumber test architecture and AI-augmented testing</div>
+                </div>
+            </div>
         </div>
-      </div>
-      <ul class="timeline-bullets">
-        <li>Led a <strong>10-member QA team</strong>; assigned tasks, mentored associates, and managed workload across Agile sprints.</li>
-        <li>Architected <strong>Selenium WebDriver + Bamboo/Jenkins CI/CD</strong> automated framework covering functional, regression, and UAT test cycles.</li>
-        <li>Automated mainframe claims adjudication using <strong>OpenConnect RPA</strong>, processing <strong>100,000+ claims/day</strong> and eliminating manual effort.</li>
-        <li>Built claim-cloning automation framework for lower environments, reducing pre-release validation gaps and post-production defects.</li>
-        <li>Drove CI/CD best practices adoption; delivered regular QA metrics and risk dashboards to stakeholders.</li>
-      </ul>
-    </div>
+    </section>
 
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-header">
-        <div class="timeline-role">Quality Engineer – Software Tester &amp; RPA Developer</div>
-        <div class="timeline-company">Optum Global Solutions (UnitedHealth Group)</div>
-        <div class="timeline-meta">
-          <span>Aug 2015 – Nov 2019</span>
-          <span class="badge">Healthcare</span>
-          <span class="badge">MAHIX · SIS-AMIL</span>
+    <!-- Case Studies -->
+    <section class="case-studies">
+        <h2 class="section-title">Transformation Highlights</h2>
+
+        <div class="case-study">
+            <div class="case-study-header">
+                <h3 class="case-study-title">Enterprise Test Architecture & AI Integration</h3>
+                <span class="company-badge">Deloitte</span>
+            </div>
+            <div class="case-study-content">
+                <div class="case-study-text">
+                    <p>Led the design and implementation of next-generation test architecture combining Selenium, Playwright, and AI-augmented testing frameworks for healthcare claims systems processing 1.5M+ monthly transactions.</p>
+                    <p>Architected governance frameworks for 800+ RPA bots (UiPath, OpenConnect), reducing manual review cycles by 60%. Established ATDD and BDD practices leveraging Cucumber/TestNG, ensuring test-driven development in agile sprints.</p>
+                </div>
+                <div class="case-study-highlights">
+                    <h4>Key Outcomes</h4>
+                    <ul>
+                        <li>1.5M+ monthly auto-adjudicated claims with zero-defect SLA</li>
+                        <li>90%+ test coverage across critical eligibility workflows</li>
+                        <li>50% reduction in test execution time via Playwright optimization</li>
+                        <li>AI-driven testing (DMN/DRL) governance framework</li>
+                        <li>Cross-functional team of 40+ QA & automation engineers</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
-      <ul class="timeline-bullets">
-        <li>Designed <strong>BDD Cucumber automation framework from scratch</strong> for a Java-based multi-module healthcare application (SIS-AMIL PoC).</li>
-        <li>Developed <strong>UiPath RPA</strong> flow for health insurance eligibility determination, reducing processing time by <strong>80%</strong>.</li>
-        <li>Executed Selenium + Cucumber test scripts in Jenkins pipeline; performed API, functional, regression, and UI testing.</li>
-        <li>Mentored junior QA engineers; prepared test execution reports and coordinated defect remediation with cross-functional teams.</li>
-      </ul>
-    </div>
 
-  </div>
-</section>
+        <div class="case-study">
+            <div class="case-study-header">
+                <h3 class="case-study-title">CI/CD Pipeline & Test Infrastructure Modernization</h3>
+                <span class="company-badge">Carelon Global Solutions</span>
+            </div>
+            <div class="case-study-content">
+                <div class="case-study-text">
+                    <p>Designed and deployed enterprise-wide CI/CD test infrastructure using GitHub Actions and Jenkins, enabling rapid, reliable deployment of healthcare IT applications across Medicaid and commercial lines of business.</p>
+                    <p>Implemented Allure 3.0 reporting with real-time dashboards, providing stakeholder visibility into test metrics and quality health. Standardized POM frameworks across 15+ projects, reducing automation maintenance overhead by 40%.</p>
+                </div>
+                <div class="case-study-highlights">
+                    <h4>Key Outcomes</h4>
+                    <ul>
+                        <li>End-to-end CI/CD pipeline with parallel test execution</li>
+                        <li>Real-time quality dashboards with Allure reporting</li>
+                        <li>Standardized POM framework reducing maintenance 40%</li>
+                        <li>Sub-5-minute smoke test execution on GitHub Actions</li>
+                        <li>Zero-downtime deployments for critical workflows</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-<!-- ACHIEVEMENTS -->
-<section class="achievements-section" id="achievements">
-  <div class="section-label">Impact & Results</div>
-  <h2>Key <span class="dim">Achievements</span></h2>
-  <div class="achievements-grid">
-    <div class="ach-card">
-      <span class="ach-icon">⚡</span>
-      <div class="ach-num">80%</div>
-      <div class="ach-desc">Reduced eligibility determination processing time via UiPath RPA automation at Optum/HIX-MA.</div>
-    </div>
-    <div class="ach-card">
-      <span class="ach-icon">🔄</span>
-      <div class="ach-num">100K+</div>
-      <div class="ach-desc">Healthcare claims automated per day through OpenConnect mainframe automation at Anthem/ElevanceHealth.</div>
-    </div>
-    <div class="ach-card">
-      <span class="ach-icon">👥</span>
-      <div class="ach-num">10</div>
-      <div class="ach-desc">QA engineers led and mentored, delivering zero post-production defects through CI/CD-integrated testing.</div>
-    </div>
-    <div class="ach-card">
-      <span class="ach-icon">🏗️</span>
-      <div class="ach-num">3</div>
-      <div class="ach-desc">End-to-end automation frameworks architected from scratch across Selenium, BDD Cucumber, and RPA stacks.</div>
-    </div>
-  </div>
-</section>
+        <div class="case-study">
+            <div class="case-study-header">
+                <h3 class="case-study-title">RPA Test Strategy & Quality Governance</h3>
+                <span class="company-badge">Optum / UnitedHealth Group</span>
+            </div>
+            <div class="case-study-content">
+                <div class="case-study-text">
+                    <p>Authored comprehensive RPA test strategy for Mainframe-to-Web transformation initiatives, ensuring quality gates for bot migrations handling $100M+ annual claims volume.</p>
+                    <p>Designed end-to-end test scenarios covering claims eligibility, authorization, and adjudication workflows. Built reusable test libraries and governance frameworks enabling high-velocity bot deployments with minimal defects.</p>
+                </div>
+                <div class="case-study-highlights">
+                    <h4>Key Outcomes</h4>
+                    <ul>
+                        <li>Enterprise RPA test strategy adopted across UHG portfolio</li>
+                        <li>$100M+ claims volume with sub-1% defect escape rate</li>
+                        <li>Reusable bot test libraries accelerating time-to-value</li>
+                        <li>Governance framework for 800+ active bots</li>
+                        <li>75% reduction in manual QA cycles via test automation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- CERTIFICATIONS -->
-<section class="certs-section" id="certifications">
-  <div class="section-label">Credentials</div>
-  <h2>Certifications <span class="dim">&amp; Training</span></h2>
-  <div class="certs-grid">
-    <div class="cert-chip"><span class="cert-dot"></span>ISTQB Foundation Level Certified</div>
-    <div class="cert-chip"><span class="cert-dot"></span>Certified RPA Developer – UiPath</div>
-    <div class="cert-chip"><span class="cert-dot"></span>American Healthcare Professional – AHM-250</div>
-    <div class="cert-chip"><span class="cert-dot"></span>Agile Scrum Practitioner</div>
-    <div class="cert-chip"><span class="cert-dot"></span>B.Tech – Aeronautical Engineering, JNTU Hyderabad (2014)</div>
-  </div>
-</section>
+    <!-- Expertise -->
+    <section class="expertise" id="expertise">
+        <div class="expertise-container">
+            <h2 class="section-title">Core Expertise</h2>
+            <div class="expertise-grid">
+                <div class="expertise-card">
+                    <h3>Test Automation Frameworks</h3>
+                    <ul>
+                        <li>Selenium/Java with POM architecture</li>
+                        <li>Playwright (JavaScript/TypeScript)</li>
+                        <li>BDD/Cucumber & ATDD</li>
+                        <li>TestNG & test execution optimization</li>
+                        <li>Allure 3.0 reporting & real-time dashboards</li>
+                    </ul>
+                </div>
+                <div class="expertise-card">
+                    <h3>DevOps & CI/CD</h3>
+                    <ul>
+                        <li>GitHub Actions workflows</li>
+                        <li>Jenkins pipeline design</li>
+                        <li>Parallel test execution</li>
+                        <li>Container-based test infrastructure</li>
+                        <li>Performance & load testing</li>
+                    </ul>
+                </div>
+                <div class="expertise-card">
+                    <h3>Advanced QA Practices</h3>
+                    <ul>
+                        <li>AI-augmented testing (DMN/DRL)</li>
+                        <li>Test architecture & framework design</li>
+                        <li>RPA test strategy & governance</li>
+                        <li>Claims processing quality assurance</li>
+                        <li>Healthcare IT compliance testing</li>
+                    </ul>
+                </div>
+                <div class="expertise-card">
+                    <h3>Enterprise RPA</h3>
+                    <ul>
+                        <li>UiPath bot testing & validation</li>
+                        <li>OpenConnect automation frameworks</li>
+                        <li>Bot governance & quality gates</li>
+                        <li>Legacy system integration testing</li>
+                        <li>Mainframe-to-Web transformations</li>
+                    </ul>
+                </div>
+                <div class="expertise-card">
+                    <h3>Team & Process Leadership</h3>
+                    <ul>
+                        <li>QA team building & scaling</li>
+                        <li>Test strategy & roadmapping</li>
+                        <li>Agile/Scrum integration</li>
+                        <li>Quality metrics & reporting</li>
+                        <li>Cross-functional collaboration</li>
+                    </ul>
+                </div>
+                <div class="expertise-card">
+                    <h3>Domain Expertise</h3>
+                    <ul>
+                        <li>Healthcare IT & claims systems</li>
+                        <li>Claims eligibility workflows</li>
+                        <li>Benefits processing & authorization</li>
+                        <li>Compliance & regulatory testing</li>
+                        <li>Large-scale transaction systems</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- CONTACT -->
-<section class="contact-section" id="contact">
-  <div class="section-label">Open to Opportunities</div>
-  <h2>Let's <span class="dim">Connect</span></h2>
-  <p class="contact-sub">Open to QA Lead, Test Architect, and QE Manager roles across healthcare IT and enterprise software.</p>
-  <div class="contact-links">
-    <a href="mailto:kodesuryam@gmail.com" class="contact-item">✉&nbsp; kodesuryam@gmail.com</a>
-    <a href="tel:+917893417170" class="contact-item">📞&nbsp; +91-7893417170</a>
-    <a href="https://www.linkedin.com/in/suryam-kode-47453a5b/" target="_blank" class="contact-item">🔗&nbsp; linkedin.com/in/kodesuryam</a>
-    <span class="contact-item">📍&nbsp; Hyderabad, India</span>
-  </div>
-</section>
+    <!-- Philosophy -->
+    <section class="philosophy" id="philosophy">
+        <h2 class="section-title">Leadership Philosophy</h2>
+        <div class="philosophy-grid">
+            <div class="philosophy-card">
+                <h4>Quality is a Business Outcome</h4>
+                <p>Testing isn't just about finding bugs—it's about enabling velocity, reducing risk, and delivering measurable business value. Every test strategy must align with product roadmaps and financial outcomes.</p>
+            </div>
+            <div class="philosophy-card">
+                <h4>Test Architecture Precedes Automation</h4>
+                <p>Sustainable automation starts with solid design. POM frameworks, reusable libraries, and governance models prevent technical debt and ensure long-term maintainability at scale.</p>
+            </div>
+            <div class="philosophy-card">
+                <h4>Intelligence Over Volume</h4>
+                <p>More tests don't equal better quality. Strategic test selection, risk-based prioritization, and AI-augmented insights drive smarter test execution and faster feedback loops.</p>
+            </div>
+            <div class="philosophy-card">
+                <h4>People Scale Faster Than Tools</h4>
+                <p>Invest in team capability, knowledge sharing, and cross-functional collaboration. High-performing QA teams compound in value—the right people multiply impact far beyond individual contributors.</p>
+            </div>
+        </div>
+    </section>
 
-<!-- FOOTER -->
-<footer>
-  <p>© 2025 Kode Suryam · QA Automation Lead</p>
-  <span class="status-dot">Available for opportunities</span>
-</footer>
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <h2>Ready to Transform Your QA Strategy?</h2>
+            <p>Let's discuss how enterprise-grade test automation and quality leadership can accelerate your product velocity and reduce risk.</p>
+            <div class="contact-links">
+                <a href="mailto:kodesuryam@yahoo.com">Email Me</a>
+                <a href="https://www.linkedin.com/in/suryam-kode/" target="_blank">LinkedIn</a>
+                <a href="tel:+917893417170">Call: +91 789 341 7170</a>
+            </div>
+            <p style="font-size: 14px; color: #999;">Hyderabad, Telangana | Available for consulting & leadership roles</p>
+        </div>
+    </section>
 
-<script>
-  // Animate skill bars when section scrolls into view
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.querySelectorAll('.bar-fill').forEach(bar => {
-          const w = bar.dataset.width || 1;
-          bar.style.setProperty('--target-width', w);
-          bar.style.width = (parseFloat(w) * 100) + '%';
-          bar.classList.add('animated');
-        });
-      }
-    });
-  }, { threshold: 0.2 });
-
-  document.querySelectorAll('.skills-section').forEach(s => observer.observe(s));
-</script>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Suryam Kode. All Rights Reserved.</p>
+    </footer>
 </body>
 </html>
